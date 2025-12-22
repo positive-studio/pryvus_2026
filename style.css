@@ -1,0 +1,172 @@
+/*
+Theme Name: Pryvus 2026
+Theme URI: https://pryvus.com
+Author: Pryvus
+Author URI: https://pryvus.com
+Description: Modern block theme for Pryvus with custom UI-kit
+Requires at least: 6.4
+Tested up to: 6.7
+Requires PHP: 8.0
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: pryvus-2026
+Tags: block-patterns, block-styles, custom-colors, custom-menu, full-site-editing, one-column, two-columns, wide-blocks
+*/
+
+/* Header Styling */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(15, 22, 35, 0.8) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.logo-icon {
+    border-radius: 0.25rem;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-icon p {
+    margin: 0;
+    line-height: 1;
+}
+
+/* Navigation Styling */
+.main-navigation .wp-block-navigation__container {
+    gap: 2rem;
+}
+
+.main-navigation a {
+    font-weight: 500;
+    color: var(--wp--preset--color--text-secondary);
+    transition: color 0.2s ease;
+}
+
+.main-navigation a:hover {
+    color: white;
+}
+
+/* CTA Button */
+.cta-button .wp-block-button__link {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+    padding: 8px;
+    margin: 0;
+    transition: color 0.2s ease;
+}
+
+.mobile-menu-toggle:hover {
+    color: white;
+}
+
+/* Responsive Styles */
+@media (max-width: 782px) {
+    .main-navigation {
+        display: none;
+    }
+    
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    .cta-button {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .header-nav-wrapper {
+        gap: 1rem;
+    }
+}
+
+/* Footer Styling */
+.site-footer {
+    font-size: 14px;
+}
+
+.footer-logo-icon {
+    border-radius: 0.25rem;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-logo-icon p {
+    margin: 0;
+    line-height: 1;
+}
+
+.footer-description {
+    line-height: 1.6;
+}
+
+.footer-links {
+    list-style: none;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0;
+}
+
+.footer-links a {
+    color: var(--wp--preset--color--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: var(--wp--preset--color--primary);
+}
+
+.footer-bottom {
+    align-items: center;
+}
+
+.footer-legal-links a {
+    color: var(--wp--preset--color--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-legal-links a:hover {
+    color: var(--wp--preset--color--primary);
+}
+
+/* Responsive Footer */
+@media (max-width: 782px) {
+    .site-footer .wp-block-columns {
+        flex-direction: column;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .footer-legal-links {
+        margin-top: 1rem;
+    }
+}

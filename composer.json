@@ -1,0 +1,11 @@
+{
+	"name": "pryvus/pryvus-2026-theme",
+	"description": "Pryvus 2026 WordPress Block Theme",
+	"type": "wordpress-theme",
+	"require": {
+		"php": ">=8.0"
+	},
+	"require-dev": {
+		"php-stubs/wordpress-stubs": "^6.7"
+	}
+}
