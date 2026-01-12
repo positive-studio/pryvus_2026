@@ -56,6 +56,10 @@
 			]
 		},
 		"color": {
+			"text": true,
+			"background": true,
+			"link": true,
+			"custom": true,
 			"palette": [
 				{
 					"slug": "primary",
@@ -101,11 +105,44 @@
 					"slug": "accent-hover",
 					"color": "#3B7AE0",
 					"name": "Accent Hover"
+				},
+				{
+					"slug": "error",
+					"color": "#FF4C61",
+					"name": "Error"
+				},
+				{
+					"slug": "transparent",
+					"color": "rgba(255, 255, 255, 0.00)",
+					"name": "Transparent"
+				},
+				{
+					"slug": "success",
+					"color": "#00C48C",
+					"name": "Success"
 				}
 			],
-			"gradients": []
+			"gradients": [
+				{
+					"slug": "error-gradient",
+					"gradient": "linear-gradient(90deg, #4C8DFF 0%, rgba(220, 38, 38, 0.6) 100%)",
+					"name": "Error Gradient"
+				},
+				{
+					"slug": "primary-gradient-subtle",
+					"gradient": "linear-gradient(90deg, rgba(76, 141, 255, 0.4) 0%, rgba(76, 141, 255, 0.15) 100%)",
+					"name": "Primary Gradient Subtle"
+				}
+			]
 		},
 		"typography": {
+			"customFontSize": true,
+			"fontStyle": true,
+			"fontWeight": true,
+			"letterSpacing": true,
+			"lineHeight": true,
+			"textDecoration": true,
+			"textTransform": true,
 			"fontFamilies": [
 				{
 					"fontFamily": "Inter, system-ui, -apple-system, sans-serif",
@@ -116,6 +153,11 @@
 					"fontFamily": "'JetBrains Mono', monospace",
 					"slug": "mono",
 					"name": "Mono (JetBrains)"
+				},
+				{
+					"fontFamily": "'Material Symbols Outlined'",
+					"slug": "icons",
+					"name": "Icons (Material Symbols)"
 				}
 			],
 			"fontSizes": [
@@ -150,18 +192,30 @@
 					"name": "H3"
 				},
 				{
-					"size": "48px",
+					"size": "42px",
 					"slug": "h2",
 					"name": "H2"
 				},
 				{
-					"size": "64px",
+					"size": "56px",
 					"slug": "h1",
 					"name": "H1"
 				}
 			]
 		},
 		"blocks": {
+			"core/heading": {
+				"color": {
+					"text": true,
+					"background": true
+				}
+			},
+			"core/paragraph": {
+				"color": {
+					"text": true,
+					"background": true
+				}
+			},
 			"core/button": {
 				"border": {
 					"radius": true

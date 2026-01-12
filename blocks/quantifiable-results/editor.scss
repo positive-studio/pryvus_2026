@@ -1,0 +1,19 @@
+.pryvus-quantifiable-results {
+    /* Editor-specific styles */
+}
+
+.quantifiable-results-container {
+    /* Inherits from style.scss */
+}
+
+/* Make RichText fields more visible in editor */
+.quantifiable-results-heading[contenteditable="true"],
+.quantifiable-results-description[contenteditable="true"] {
+    outline: 1px dashed rgba(76, 141, 255, 0.3);
+    outline-offset: 4px;
+}
+
+.quantifiable-results-heading[contenteditable="true"]:focus,
+.quantifiable-results-description[contenteditable="true"]:focus {
+    outline: 2px solid rgba(76, 141, 255, 0.6);
+}

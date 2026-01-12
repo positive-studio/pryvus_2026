@@ -1,0 +1,77 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","style":{"spacing":{"padding":{"top":"var:preset|spacing|xl","bottom":"var:preset|spacing|xl"}}},"backgroundColor":"background-primary","layout":{"type":"constrained"}} -->
+<main class="wp-block-group has-background-primary-background-color has-background" style="padding-top:var(--wp--preset--spacing--xl);padding-bottom:var(--wp--preset--spacing--xl)">
+    
+    <!-- wp:group {"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|3xl"}}},"layout":{"type":"constrained"}} -->
+    <div class="wp-block-group" style="margin-bottom:var(--wp--preset--spacing--3xl)">
+        
+        <!-- wp:query-title {"type":"archive","textAlign":"left","showPrefix":false,"style":{"typography":{"fontSize":"48px","fontWeight":"700","lineHeight":"1.2"},"spacing":{"margin":{"bottom":"var:preset|spacing|m"}}},"textColor":"text-primary"} /-->
+        
+        <!-- wp:term-description {"textAlign":"left","style":{"typography":{"fontSize":"18px","lineHeight":"1.6"},"spacing":{"margin":{"bottom":"var:preset|spacing|xl"}}},"textColor":"text-secondary"} /-->
+        
+        <!-- wp:group {"className":"projects-filters","style":{"spacing":{"padding":{"top":"var:preset|spacing|m","bottom":"var:preset|spacing|m","left":"var:preset|spacing|m","right":"var:preset|spacing|m"},"margin":{"top":"var:preset|spacing|xl"}},"border":{"width":"0px"}},"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"flex-start","verticalAlignment":"center"}} -->
+        <div class="wp-block-group projects-filters" style="border-width:0px;margin-top:var(--wp--preset--spacing--xl);padding-top:var(--wp--preset--spacing--m);padding-right:var(--wp--preset--spacing--m);padding-bottom:var(--wp--preset--spacing--m);padding-left:var(--wp--preset--spacing--m)">
+            
+            <!-- wp:search {"label":"Search","showLabel":false,"placeholder":"Search by technology, industry...","width":300,"widthUnit":"px","buttonPosition":"no-button","buttonUseIcon":true,"style":{"border":{"radius":"0.5rem","width":"1px"}},"borderColor":"border-dark","backgroundColor":"background-dark"} /-->
+            
+        </div>
+        <!-- /wp:group -->
+        
+    </div>
+    <!-- /wp:group -->
+    
+    <!-- wp:query {"queryId":1,"query":{"perPage":9,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true},"layout":{"type":"constrained"}} -->
+    <div class="wp-block-query">
+        
+        <!-- wp:post-template {"style":{"spacing":{"blockGap":"var:preset|spacing|l"}},"layout":{"type":"grid","columnCount":3}} -->
+        
+            <!-- wp:group {"className":"project-card","style":{"border":{"radius":"0.75rem","width":"1px","color":"var(--wp--preset--color--border-dark)"},"spacing":{"padding":{"top":"0","bottom":"0","left":"0","right":"0"}}},"backgroundColor":"surface-dark","layout":{"type":"constrained"}} -->
+            <div class="wp-block-group project-card has-border-color has-surface-dark-background-color has-background" style="border-color:var(--wp--preset--color--border-dark);border-width:1px;border-radius:0.75rem;padding-top:0;padding-right:0;padding-bottom:0;padding-left:0">
+                
+                <!-- wp:post-featured-image {"isLink":true,"aspectRatio":"16/9","style":{"border":{"radius":{"top":"0.75rem","left":"0.75rem"}}}} /-->
+                
+                <!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|m","bottom":"var:preset|spacing|m","left":"var:preset|spacing|m","right":"var:preset|spacing|m"},"blockGap":"var:preset|spacing|s"}},"layout":{"type":"constrained"}} -->
+                <div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--m);padding-right:var(--wp--preset--spacing--m);padding-bottom:var(--wp--preset--spacing--m);padding-left:var(--wp--preset--spacing--m)">
+                    
+                    <!-- wp:post-terms {"term":"category","style":{"typography":{"fontSize":"12px","textTransform":"uppercase","letterSpacing":"0.05em","fontWeight":"600"}},"textColor":"primary"} /-->
+                    
+                    <!-- wp:post-title {"isLink":true,"style":{"typography":{"fontSize":"20px","fontWeight":"700","lineHeight":"1.3"},"spacing":{"margin":{"top":"var:preset|spacing|xs","bottom":"var:preset|spacing|xs"}}},"textColor":"text-primary"} /-->
+                    
+                    <!-- wp:post-excerpt {"moreText":"View Case Study →","excerptLength":20,"style":{"typography":{"fontSize":"14px","lineHeight":"1.6"}},"textColor":"text-secondary"} /-->
+                    
+                    <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|xs","margin":{"top":"var:preset|spacing|s"}}},"layout":{"type":"flex","flexWrap":"wrap"}} -->
+                    <div class="wp-block-group" style="margin-top:var(--wp--preset--spacing--s)">
+                        <!-- wp:post-terms {"term":"post_tag","style":{"typography":{"fontSize":"11px"},"spacing":{"padding":{"top":"4px","bottom":"4px","left":"8px","right":"8px"}},"border":{"radius":"12px"}},"backgroundColor":"background-dark","textColor":"text-muted"} /-->
+                    </div>
+                    <!-- /wp:group -->
+                    
+                </div>
+                <!-- /wp:group -->
+                
+            </div>
+            <!-- /wp:group -->
+        
+        <!-- /wp:post-template -->
+        
+        <!-- wp:query-pagination {"paginationArrow":"arrow","style":{"spacing":{"margin":{"top":"var:preset|spacing|3xl"}}},"layout":{"type":"flex","justifyContent":"center"}} -->
+            <!-- wp:query-pagination-previous /-->
+            <!-- wp:query-pagination-numbers /-->
+            <!-- wp:query-pagination-next /-->
+        <!-- /wp:query-pagination -->
+        
+    </div>
+    <!-- /wp:query -->
+    
+    <!-- wp:group {"className":"wp-block-query-no-results","style":{"spacing":{"margin":{"top":"var:preset|spacing|3xl"},"padding":{"top":"var:preset|spacing|2xl","bottom":"var:preset|spacing|2xl","left":"var:preset|spacing|xl","right":"var:preset|spacing|xl"}}},"layout":{"type":"constrained"}} -->
+    <div class="wp-block-group wp-block-query-no-results" style="margin-top:var(--wp--preset--spacing--3xl);padding-top:var(--wp--preset--spacing--2xl);padding-right:var(--wp--preset--spacing--xl);padding-bottom:var(--wp--preset--spacing--2xl);padding-left:var(--wp--preset--spacing--xl)">
+        <!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"18px"}},"textColor":"text-secondary"} -->
+        <p class="has-text-align-center has-text-secondary-color has-text-color" style="font-size:18px">No projects found. Try adjusting your filters or search terms.</p>
+        <!-- /wp:paragraph -->
+    </div>
+    <!-- /wp:group -->
+    
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

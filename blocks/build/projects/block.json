@@ -1,0 +1,92 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "pryvus/projects",
+    "title": "Projects Showcase",
+    "category": "widgets",
+    "icon": "portfolio",
+    "description": "Display featured projects from case studies",
+    "keywords": [
+        "projects",
+        "portfolio",
+        "case studies",
+        "work"
+    ],
+    "version": "1.0.0",
+    "textdomain": "pryvus-2026",
+    "supports": {
+        "align": [
+            "wide",
+            "full"
+        ],
+        "spacing": {
+            "margin": true,
+            "padding": true
+        },
+        "color": {
+            "text": true,
+            "background": true
+        }
+    },
+    "attributes": {
+        "sectionLabel": {
+            "type": "string",
+            "default": "CASE STUDIES"
+        },
+        "heading": {
+            "type": "string",
+            "default": "Selected Work"
+        },
+        "viewAllText": {
+            "type": "string",
+            "default": "View all projects"
+        },
+        "viewAllUrl": {
+            "type": "string",
+            "default": "/projects"
+        },
+        "numberOfPosts": {
+            "type": "number",
+            "default": 3
+        },
+        "categoryId": {
+            "type": "number",
+            "default": 0
+        },
+        "backgroundColor": {
+            "type": "string",
+            "default": "#0B0D10"
+        },
+        "cardBackground": {
+            "type": "string",
+            "default": "#151922"
+        },
+        "cardBorderColor": {
+            "type": "string",
+            "default": "rgba(76, 141, 255, 0.08)"
+        },
+        "cardBorderWidth": {
+            "type": "number",
+            "default": 1
+        },
+        "hasHover": {
+            "type": "boolean",
+            "default": true
+        },
+        "showFeaturedImage": {
+            "type": "boolean",
+            "default": true
+        },
+        "showCategory": {
+            "type": "boolean",
+            "default": true
+        },
+        "showMetric": {
+            "type": "boolean",
+            "default": true
+        }
+    },
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css"
+}

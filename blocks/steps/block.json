@@ -1,0 +1,101 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "pryvus/steps",
+    "title": "Process Steps",
+    "category": "widgets",
+    "icon": "list-view",
+    "description": "Display a multi-step process with icons, titles, and descriptions",
+    "keywords": [
+        "steps",
+        "process",
+        "workflow",
+        "phases"
+    ],
+    "version": "1.0.0",
+    "textdomain": "pryvus-2026",
+    "supports": {
+        "align": [
+            "wide",
+            "full"
+        ],
+        "spacing": {
+            "margin": true,
+            "padding": true
+        },
+        "color": {
+            "text": true,
+            "background": true
+        }
+    },
+    "attributes": {
+        "sectionLabel": {
+            "type": "string",
+            "default": "THE PROCESS"
+        },
+        "heading": {
+            "type": "string",
+            "default": "Engineering Standard"
+        },
+        "cardBackground": {
+            "type": "string",
+            "default": "#151922"
+        },
+        "cardBorderColor": {
+            "type": "string",
+            "default": "rgba(76, 141, 255, 0.08)"
+        },
+        "cardBorderWidth": {
+            "type": "number",
+            "default": 1
+        },
+        "backgroundSize": {
+            "type": "number",
+            "default": 80
+        },
+        "borderRadius": {
+            "type": "number",
+            "default": 50
+        },
+        "iconSize": {
+            "type": "number",
+            "default": 40
+        },
+        "hasHover": {
+            "type": "boolean",
+            "default": false
+        },
+        "hasConnectors": {
+            "type": "boolean",
+            "default": true
+        },
+        "steps": {
+            "type": "array",
+            "default": [
+                {
+                    "icon": "search",
+                    "title": "Discovery",
+                    "description": "Requirement gathering and technical feasibility analysis."
+                },
+                {
+                    "icon": "architecture",
+                    "title": "Architecture",
+                    "description": "Designing scalable data models and infrastructure."
+                },
+                {
+                    "icon": "code",
+                    "title": "Development",
+                    "description": "Agile sprints with regular code reviews and CI/CD."
+                },
+                {
+                    "icon": "rocket_launch",
+                    "title": "QA & Launch",
+                    "description": "Automated testing, staging deployment, and final release."
+                }
+            ]
+        }
+    },
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css"
+}
