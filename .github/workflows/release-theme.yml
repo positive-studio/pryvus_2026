@@ -1,0 +1,109 @@
+name: Build and Release Theme
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'  # Triggers on version tags like v1.0.1
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get version from tag
+        id: version
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v}
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Version: $VERSION"
+
+      - name: Update version in style.css
+        run: |
+          sed -i "s/Version: .*/Version: ${{ steps.version.outputs.version }}/" themes/pryvus_2026/style.css
+
+      - name: Build theme package
+        run: |
+          cd themes
+          zip -r pryvus_2026-${{ steps.version.outputs.version }}.zip pryvus_2026/ \
+            -x "pryvus_2026/.git*" \
+            -x "pryvus_2026/node_modules/*" \
+            -x "pryvus_2026/vendor/*" \
+            -x "pryvus_2026/.DS_Store" \
+            -x "pryvus_2026/blocks/node_modules/*" \
+            -x "pryvus_2026/blocks/package-lock.json"
+          
+          # Verify the archive was created
+          ls -lh pryvus_2026-${{ steps.version.outputs.version }}.zip
+
+      - name: Generate update-info.json
+        run: |
+          cat > update-info.json << EOF
+          {
+            "name": "Pryvus 2026",
+            "slug": "pryvus_2026",
+            "version": "${{ steps.version.outputs.version }}",
+            "author": "Pryvus",
+            "homepage": "https://pryvus.com",
+            "requires": "6.4",
+            "tested": "6.7",
+            "requires_php": "8.0",
+            "package": "https://github.com/${{ github.repository }}/releases/download/v${{ steps.version.outputs.version }}/pryvus_2026-${{ steps.version.outputs.version }}.zip",
+            "url": "https://github.com/${{ github.repository }}",
+            "description": "Modern block theme for Pryvus with custom UI-kit. Full Site Editing support with advanced patterns and custom blocks.",
+            "changelog": "<h3>Version ${{ steps.version.outputs.version }}</h3><p>See <a href='https://github.com/${{ github.repository }}/releases/tag/v${{ steps.version.outputs.version }}'>release notes</a> for details.</p>"
+          }
+          EOF
+          
+          cat update-info.json
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Pryvus 2026 Theme v${{ steps.version.outputs.version }}
+          draft: false
+          prerelease: false
+          body: |
+            ## Pryvus 2026 WordPress Theme - Version ${{ steps.version.outputs.version }}
+            
+            ### Installation
+            Download the ZIP file below and install via WordPress admin:
+            1. Go to Appearance → Themes → Add New
+            2. Click "Upload Theme"
+            3. Choose the downloaded ZIP file
+            4. Click "Install Now"
+            
+            ### Auto-update URL
+            Use this URL for automatic theme updates:
+            ```
+            https://github.com/${{ github.repository }}/releases/download/v${{ steps.version.outputs.version }}/update-info.json
+            ```
+            
+            ### Changes
+            See commit history for detailed changes.
+
+      - name: Upload theme ZIP to release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./themes/pryvus_2026-${{ steps.version.outputs.version }}.zip
+          asset_name: pryvus_2026-${{ steps.version.outputs.version }}.zip
+          asset_content_type: application/zip
+
+      - name: Upload update-info.json to release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./update-info.json
+          asset_name: update-info.json
+          asset_content_type: application/json

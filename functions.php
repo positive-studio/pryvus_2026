@@ -120,3 +120,123 @@ function pryvus_2026_register_blocks()
 	}
 }
 add_action('init', 'pryvus_2026_register_blocks');
+
+/**
+ * Theme update checker.
+ * Checks for theme updates from a custom server.
+ */
+function pryvus_2026_check_for_update($transient)
+{
+	if (empty($transient->checked)) {
+		return $transient;
+	}
+
+	// Theme information
+	$theme_slug = 'pryvus_2026';
+	$current_theme = wp_get_theme($theme_slug);
+	$current_version = $current_theme->get('Version');
+
+	// Update server URL - GitHub releases
+	// Replace YOUR_USERNAME with your GitHub username or organization
+	$update_url = 'https://github.com/YOUR_USERNAME/Pryvus/releases/latest/download/update-info.json';
+
+	// Check for updates
+	$remote = wp_remote_get(
+		$update_url,
+		array(
+			'timeout' => 10,
+			'headers' => array(
+				'Accept' => 'application/json'
+			)
+		)
+	);
+
+	if (
+		is_wp_error($remote) ||
+		200 !== wp_remote_retrieve_response_code($remote) ||
+		empty(wp_remote_retrieve_body($remote))
+	) {
+		return $transient;
+	}
+
+	$remote_data = json_decode(wp_remote_retrieve_body($remote));
+
+	if (
+		!$remote_data ||
+		!isset($remote_data->version) ||
+		!isset($remote_data->package)
+	) {
+		return $transient;
+	}
+
+	// Compare versions
+	if (version_compare($current_version, $remote_data->version, '<')) {
+		$transient->response[$theme_slug] = array(
+			'theme'       => $theme_slug,
+			'new_version' => $remote_data->version,
+			'url'         => isset($remote_data->url) ? $remote_data->url : '',
+			'package'     => $remote_data->package,
+		);
+	}
+
+	return $transient;
+}
+add_filter('pre_set_site_transient_update_themes', 'pryvus_2026_check_for_update');
+
+/**
+ * Add theme update information to the theme details.
+ */
+function pryvus_2026_theme_update_info($false, $action, $response)
+{
+	if ('theme_information' !== $action) {
+		return $false;
+	}
+
+	if (empty($response->slug) || 'pryvus_2026' !== $response->slug) {
+		return $false;
+	}
+
+	// Update server URL - GitHub releases
+	$update_url = 'https://github.com/YOUR_USERNAME/Pryvus/releases/latest/download/update-info.json';
+
+	$remote = wp_remote_get(
+		$update_url,
+		array(
+			'timeout' => 10,
+			'headers' => array(
+				'Accept' => 'application/json'
+			)
+		)
+	);
+
+	if (
+		is_wp_error($remote) ||
+		200 !== wp_remote_retrieve_response_code($remote) ||
+		empty(wp_remote_retrieve_body($remote))
+	) {
+		return $false;
+	}
+
+	$remote_data = json_decode(wp_remote_retrieve_body($remote));
+
+	if (!$remote_data) {
+		return $false;
+	}
+
+	return (object) array(
+		'name'          => isset($remote_data->name) ? $remote_data->name : 'Pryvus 2026',
+		'slug'          => 'pryvus_2026',
+		'version'       => isset($remote_data->version) ? $remote_data->version : '',
+		'author'        => isset($remote_data->author) ? $remote_data->author : 'Pryvus',
+		'homepage'      => isset($remote_data->homepage) ? $remote_data->homepage : 'https://pryvus.com',
+		'requires'      => isset($remote_data->requires) ? $remote_data->requires : '6.4',
+		'tested'        => isset($remote_data->tested) ? $remote_data->tested : '6.7',
+		'requires_php'  => isset($remote_data->requires_php) ? $remote_data->requires_php : '8.0',
+		'download_link' => isset($remote_data->package) ? $remote_data->package : '',
+		'sections'      => array(
+			'description' => isset($remote_data->description) ? $remote_data->description : '',
+			'changelog'   => isset($remote_data->changelog) ? $remote_data->changelog : '',
+		),
+	);
+}
+add_filter('themes_api', 'pryvus_2026_theme_update_info', 10, 3);

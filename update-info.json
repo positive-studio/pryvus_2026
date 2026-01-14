@@ -1,0 +1,14 @@
+{
+  "name": "Pryvus 2026",
+  "slug": "pryvus_2026",
+  "version": "1.0.0",
+  "author": "Pryvus",
+  "homepage": "https://pryvus.com",
+  "requires": "6.4",
+  "tested": "6.7",
+  "requires_php": "8.0",
+  "package": "https://github.com/positive-studio/pryvus_2026/releases/download/v1.0.1/pryvus_2026-1.0.1.zip",
+  "url": "https://github.com/positive-studio/pryvus_2026",
+  "description": "Modern block theme for Pryvus with custom UI-kit. Full Site Editing support with advanced patterns and custom blocks.",
+  "changelog": "<h3>Version 1.0.1</h3><ul><li>Bug fixes and improvements</li><li>Updated block patterns</li><li>Performance optimizations</li></ul>"
+}
