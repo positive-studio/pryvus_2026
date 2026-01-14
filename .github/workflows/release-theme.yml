@@ -22,18 +22,17 @@ jobs:
 
       - name: Update version in style.css
         run: |
-          sed -i "s/Version: .*/Version: ${{ steps.version.outputs.version }}/" themes/pryvus_2026/style.css
+          sed -i "s/Version: .*/Version: ${{ steps.version.outputs.version }}/" style.css
 
       - name: Build theme package
         run: |
-          cd themes
-          zip -r pryvus_2026-${{ steps.version.outputs.version }}.zip pryvus_2026/ \
-            -x "pryvus_2026/.git*" \
-            -x "pryvus_2026/node_modules/*" \
-            -x "pryvus_2026/vendor/*" \
-            -x "pryvus_2026/.DS_Store" \
-            -x "pryvus_2026/blocks/node_modules/*" \
-            -x "pryvus_2026/blocks/package-lock.json"
+          zip -r pryvus_2026-${{ steps.version.outputs.version }}.zip ./ \
+            -x ".git*" \
+            -x "node_modules/*" \
+            -x "vendor/*" \
+            -x ".DS_Store" \
+            -x "blocks/node_modules/*" \
+            -x "blocks/package-lock.json"
           
           # Verify the archive was created
           ls -lh pryvus_2026-${{ steps.version.outputs.version }}.zip
