@@ -1,0 +1,82 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "pryvus/quantifiable-results",
+    "title": "Quantifiable Results",
+    "category": "widgets",
+    "icon": "chart-bar",
+    "description": "Display performance metrics with before/after comparisons and PageSpeed insights",
+    "keywords": [
+        "results",
+        "metrics",
+        "performance",
+        "pagespeed",
+        "lighthouse"
+    ],
+    "version": "1.0.0",
+    "textdomain": "pryvus-2026",
+    "supports": {
+        "align": [
+            "wide",
+            "full"
+        ],
+        "spacing": {
+            "margin": true,
+            "padding": true
+        },
+        "color": {
+            "text": true,
+            "background": true
+        }
+    },
+    "attributes": {
+        "heading": {
+            "type": "string",
+            "default": "Quantifiable Results"
+        },
+        "description": {
+            "type": "string",
+            "default": "We define success through metrics, not feelings. See the difference a properly architected backend makes on standard Google Lighthouse scores."
+        },
+        "metrics": {
+            "type": "array",
+            "default": [
+                {
+                    "label": "Time to First Byte (TTFB)",
+                    "improvement": "-85% Improvement",
+                    "beforeValue": "1.2s",
+                    "afterValue": "0.18s",
+                    "beforePercent": 100,
+                    "afterPercent": 15
+                },
+                {
+                    "label": "Largest Contentful Paint",
+                    "improvement": "2.5x Faster",
+                    "beforeValue": "3.8s",
+                    "afterValue": "1.9s",
+                    "beforePercent": 100,
+                    "afterPercent": 50
+                }
+            ]
+        },
+        "pageSpeedBefore": {
+            "type": "number",
+            "default": 42
+        },
+        "pageSpeedAfter": {
+            "type": "number",
+            "default": 98
+        },
+        "cardBackground": {
+            "type": "string",
+            "default": "#1a2332"
+        },
+        "backgroundColor": {
+            "type": "string",
+            "default": "#0B0D10"
+        }
+    },
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./editor.css",
+    "style": "file:./style.css"
+}

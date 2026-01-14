@@ -25,6 +25,12 @@ jobs:
         run: |
           sed -i "s/Version: .*/Version: ${{ steps.version.outputs.version }}/" style.css
 
+      - name: Build theme blocks
+        run: |
+          cd blocks
+          npm install
+          npm run build
+
       - name: Build theme package
         run: |
           zip -r pryvus_2026-${{ steps.version.outputs.version }}.zip ./ \
